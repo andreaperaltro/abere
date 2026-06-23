@@ -1,10 +1,11 @@
 import { useEffect } from "react";
 
 const SITE_NAME = "Abere Selezione";
-const TITLE = "Abere Selezione | Importazione e Distribuzione Vini";
-const SITE_URL = "https://abere.it";
+const TITLE = "Abere Selezione — Vini artigianali da produttori indipendenti";
+const CANONICAL_URL = "https://abere.vercel.app/";
+const OG_URL = "http://abereselezione.it/";
 const DESCRIPTION =
-  "Abere nasce dalla voglia di rimettere al centro la piacevolezza del vino. Selezione, importazione e distribuzione di vini artigianali da produttori che rispettano la natura e il territorio.";
+  "Abere seleziona, importa e distribuisce vini artigianali di produttori indipendenti. Una selezione internazionale di vignaioli che interpretano il terroir attraverso il dialogo tra uomo, natura e territorio.";
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
   let el = document.querySelector(
@@ -35,17 +36,15 @@ function upsertLink(rel: string, href: string, extra?: Record<string, string>) {
 
 export function useSEO() {
   useEffect(() => {
-    const ogImage = `${SITE_URL}/og-image.svg`;
-    const ogLogo = `${SITE_URL}/favicon.svg`;
+    const ogImage = "/og-image.png";
     const favicon = "/favicon.svg";
-    const ogUrl = `${SITE_URL}/`;
 
     // Language
     document.documentElement.setAttribute("lang", "it");
 
     // Title — override whatever Figma pre-set
     document.title = TITLE;
-    upsertLink("canonical", ogUrl);
+    upsertLink("canonical", CANONICAL_URL);
 
     // Standard meta
     upsertMeta("name", "description", DESCRIPTION);
@@ -59,13 +58,12 @@ export function useSEO() {
     upsertMeta("property", "og:title", TITLE);
     upsertMeta("property", "og:description", DESCRIPTION);
     upsertMeta("property", "og:type", "website");
-    upsertMeta("property", "og:url", ogUrl);
+    upsertMeta("property", "og:url", OG_URL);
     upsertMeta("property", "og:locale", "it_IT");
     upsertMeta("property", "og:image", ogImage);
     upsertMeta("property", "og:image:width", "1200");
     upsertMeta("property", "og:image:height", "630");
-    upsertMeta("property", "og:image:alt", "Abere Selezione — Importazione e distribuzione vini artigianali");
-    upsertMeta("property", "og:logo", ogLogo);
+    upsertMeta("property", "og:image:alt", SITE_NAME);
 
     // Twitter Card
     upsertMeta("name", "twitter:card", "summary_large_image");
