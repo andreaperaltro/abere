@@ -5,6 +5,7 @@
       
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <script>document.documentElement.classList.add("js");</script>
       <title>Abere Selezione — Vini artigianali da produttori indipendenti</title>
       <meta name="description" content="Abere seleziona, importa e distribuisce vini artigianali di produttori indipendenti, da vignaioli che dialogano con uomo, natura e territorio." />
       <meta name="robots" content="index, follow" />
@@ -34,6 +35,17 @@
         #root { min-height: 100%; }
         .seo-fallback { max-width: 760px; padding: 80px 24px; }
         .seo-fallback a { color: inherit; }
+        .js .seo-fallback {
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          padding: 0;
+          margin: -1px;
+          overflow: hidden;
+          clip: rect(0, 0, 0, 0);
+          white-space: nowrap;
+          border: 0;
+        }
       </style>
       
     </head>
