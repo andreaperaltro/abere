@@ -212,9 +212,10 @@ function overlaps(a: Rect, b: Rect): boolean {
 
 /** Collect blocked zones: actual visual text bounds + SVGs + other icons.
  *
- *  We use the Range API (getClientRects) for text elements so we get the
- *  actual rendered line boxes, not the full-width block-element boxes.
- *  This leaves the right margin and the top area free when text is short.
+ *  We use the Range API (getClientRects) for text nodes so we get the actual
+ *  rendered line boxes, not the full-width block-element boxes. This catches
+ *  headings, nav labels, links, and paragraph lines without blocking empty
+ *  layout space.
  */
 // getBoundingClientRect() is viewport-relative; for absolute positioning we
 // add window.scrollY so zones map to document coordinates.
@@ -227,10 +228,23 @@ function blockedZones(
   const container = document.querySelector("[data-content-zone]");
 
   if (container) {
-    container.querySelectorAll("p, a, button").forEach((el) => {
+    const textWalker = document.createTreeWalker(
+      container,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode(node) {
+          return node.textContent?.trim()
+            ? NodeFilter.FILTER_ACCEPT
+            : NodeFilter.FILTER_REJECT;
+        },
+      },
+    );
+
+    let textNode = textWalker.nextNode();
+    while (textNode) {
       try {
         const range = document.createRange();
-        range.selectNodeContents(el);
+        range.selectNodeContents(textNode);
         for (const r of Array.from(range.getClientRects())) {
           if (r.width > 4 && r.height > 4) {
             zones.push({
@@ -241,8 +255,10 @@ function blockedZones(
             });
           }
         }
+        range.detach?.();
       } catch (_) { /* ignore */ }
-    });
+      textNode = textWalker.nextNode();
+    }
 
     container.querySelectorAll("svg").forEach((el) => {
       const r = (el as SVGSVGElement).getBoundingClientRect();
@@ -466,8 +482,8 @@ export default function AnimatedIcons() {
   });
 
   useEffect(() => {
-    const size = getIconSize();
-    setIcons((prev) => {
+    const placeIcons = () => setIcons((prev) => {
+      const size = getIconSize();
       const pos0 = findSafePos([], prev[0].quadrant);
       const pos1 = findSafePos([pos0], prev[1].quadrant);
       return [
@@ -475,6 +491,22 @@ export default function AnimatedIcons() {
         { ...prev[1], pos: pos1, size },
       ];
     });
+
+    placeIcons();
+
+    let resizeTimer: ReturnType<typeof setTimeout>;
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(placeIcons, 150);
+    };
+
+    window.addEventListener("resize", handleResize);
+    document.fonts?.ready.then(placeIcons).catch(() => {});
+
+    return () => {
+      clearTimeout(resizeTimer);
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   const handleDrawStart = useCallback((id: number) => {
