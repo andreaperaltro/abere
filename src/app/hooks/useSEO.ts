@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 const SITE_NAME = "Abere Selezione";
 const TITLE = "Abere Selezione | Importazione e Distribuzione Vini";
+const SITE_URL = "https://abere.it";
 const DESCRIPTION =
   "Abere nasce dalla voglia di rimettere al centro la piacevolezza del vino. Selezione, importazione e distribuzione di vini artigianali da produttori che rispettano la natura e il territorio.";
 
@@ -34,16 +35,17 @@ function upsertLink(rel: string, href: string, extra?: Record<string, string>) {
 
 export function useSEO() {
   useEffect(() => {
-    const origin = window.location.origin;
-    const ogImage = `${origin}/og-image.svg`;
-    const ogLogo = `${origin}/favicon.svg`;
-    const ogUrl = origin + "/";
+    const ogImage = `${SITE_URL}/og-image.svg`;
+    const ogLogo = `${SITE_URL}/favicon.svg`;
+    const favicon = "/favicon.svg";
+    const ogUrl = `${SITE_URL}/`;
 
     // Language
     document.documentElement.setAttribute("lang", "it");
 
     // Title — override whatever Figma pre-set
     document.title = TITLE;
+    upsertLink("canonical", ogUrl);
 
     // Standard meta
     upsertMeta("name", "description", DESCRIPTION);
@@ -76,8 +78,8 @@ export function useSEO() {
     document
       .querySelectorAll("link[rel*='icon']")
       .forEach((el) => el.remove());
-    upsertLink("icon", ogLogo, { type: "image/svg+xml" });
-    upsertLink("shortcut icon", ogLogo, { type: "image/svg+xml" });
-    upsertLink("apple-touch-icon", ogLogo);
+    upsertLink("icon", favicon, { type: "image/svg+xml" });
+    upsertLink("shortcut icon", favicon, { type: "image/svg+xml" });
+    upsertLink("apple-touch-icon", favicon);
   }, []);
 }
