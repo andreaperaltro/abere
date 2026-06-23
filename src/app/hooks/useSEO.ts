@@ -4,7 +4,9 @@ const SITE_NAME = "Abere Selezione";
 const TITLE = "Abere Selezione — Vini artigianali da produttori indipendenti";
 const CANONICAL_URL = "https://abere.vercel.app/";
 const OG_URL = "http://abereselezione.it/";
-const DESCRIPTION =
+const META_DESCRIPTION =
+  "Abere seleziona, importa e distribuisce vini artigianali di produttori indipendenti, da vignaioli che dialogano con uomo, natura e territorio.";
+const SOCIAL_DESCRIPTION =
   "Abere seleziona, importa e distribuisce vini artigianali di produttori indipendenti. Una selezione internazionale di vignaioli che interpretano il terroir attraverso il dialogo tra uomo, natura e territorio.";
 
 function upsertMeta(attr: "name" | "property", key: string, content: string) {
@@ -47,7 +49,7 @@ export function useSEO() {
     upsertLink("canonical", CANONICAL_URL);
 
     // Standard meta
-    upsertMeta("name", "description", DESCRIPTION);
+    upsertMeta("name", "description", META_DESCRIPTION);
     upsertMeta("name", "keywords", "vini, selezione vini, importazione vini, distribuzione vini, vini artigianali, vigneron, Abere, Thomas Piras, Marco Tinessa");
     upsertMeta("name", "author", SITE_NAME);
     upsertMeta("name", "robots", "index, follow");
@@ -56,7 +58,7 @@ export function useSEO() {
     // Open Graph — override Figma's pre-set defaults
     upsertMeta("property", "og:site_name", SITE_NAME);
     upsertMeta("property", "og:title", TITLE);
-    upsertMeta("property", "og:description", DESCRIPTION);
+    upsertMeta("property", "og:description", SOCIAL_DESCRIPTION);
     upsertMeta("property", "og:type", "website");
     upsertMeta("property", "og:url", OG_URL);
     upsertMeta("property", "og:locale", "it_IT");
@@ -68,7 +70,7 @@ export function useSEO() {
     // Twitter Card
     upsertMeta("name", "twitter:card", "summary_large_image");
     upsertMeta("name", "twitter:title", TITLE);
-    upsertMeta("name", "twitter:description", DESCRIPTION);
+    upsertMeta("name", "twitter:description", SOCIAL_DESCRIPTION);
     upsertMeta("name", "twitter:image", ogImage);
     upsertMeta("name", "twitter:image:alt", "Abere Selezione");
 

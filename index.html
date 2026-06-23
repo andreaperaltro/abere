@@ -6,7 +6,7 @@
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <title>Abere Selezione — Vini artigianali da produttori indipendenti</title>
-      <meta name="description" content="Abere seleziona, importa e distribuisce vini artigianali di produttori indipendenti. Una selezione internazionale di vignaioli che interpretano il terroir attraverso il dialogo tra uomo, natura e territorio." />
+      <meta name="description" content="Abere seleziona, importa e distribuisce vini artigianali di produttori indipendenti, da vignaioli che dialogano con uomo, natura e territorio." />
       <meta name="robots" content="index, follow" />
       <meta name="author" content="Abere Selezione" />
       <meta name="keywords" content="vini, selezione vini, importazione vini, distribuzione vini, vini artigianali, vigneron, Abere, Thomas Piras, Marco Tinessa" />
@@ -28,13 +28,45 @@
       <meta name="twitter:image:alt" content="Abere Selezione" />
       <link rel="canonical" href="https://abere.vercel.app/" />
       <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-      <style>html, body { height: 100%; margin: 0; } #root { height: 100%; }</style>
+      <style>
+        html, body { height: 100%; margin: 0; }
+        body { background: #D3C175; color: #000; font-family: Futura, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+        #root { min-height: 100%; }
+        .seo-fallback { max-width: 760px; padding: 80px 24px; }
+        .seo-fallback a { color: inherit; }
+      </style>
       
     </head>
 
     <body>
       
-      <div id="root"></div>
+      <div id="root">
+        <main class="seo-fallback">
+          <h1>Abere Selezione — Vini artigianali da produttori indipendenti</h1>
+          <nav aria-label="Sezioni del sito">
+            <a href="#selezione">Selezione</a>
+            <a href="#importazione">Importazione</a>
+            <a href="#distribuzione">Distribuzione</a>
+            <a href="#contatti">Contatti</a>
+          </nav>
+          <section id="selezione">
+            <h2>Selezione di vini artigianali</h2>
+            <p>Abere seleziona vini artigianali di produttori indipendenti e vignaioli internazionali.</p>
+          </section>
+          <section id="importazione">
+            <h2>Importazione di produttori indipendenti</h2>
+            <p>Una selezione internazionale che interpreta il terroir attraverso uomo, natura e territorio.</p>
+          </section>
+          <section id="distribuzione">
+            <h2>Distribuzione vini</h2>
+            <p>Abere distribuisce vini pensati per rimettere al centro la piacevolezza del bere.</p>
+          </section>
+          <section id="contatti">
+            <h2>Contatti Abere Selezione</h2>
+            <a href="mailto:thomas@abere.it">thomas@abere.it</a>
+          </section>
+        </main>
+      </div>
       <script type="module" src="/src/main.tsx"></script>
       
     </body>

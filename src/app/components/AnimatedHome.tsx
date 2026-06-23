@@ -80,28 +80,38 @@ export default function AnimatedHome({ initialBgColor }: { initialBgColor: strin
 
       {/* Services Section */}
       <AnimatedSection delay={0.1}>
-        <nav aria-label="Servizi" className="flex flex-col lg:flex-row gap-[10px] lg:gap-[30px] items-start leading-[normal] text-black whitespace-nowrap w-full">
-          <span className="relative shrink-0 text-[30px] uppercase" style={{ fontFamily: 'var(--font-futura-medium)', fontWeight: 'var(--font-weight-medium)' }}>Selezione</span>
-          <span className="relative shrink-0 text-[30px] uppercase" style={{ fontFamily: 'var(--font-futura-medium)', fontWeight: 'var(--font-weight-medium)' }}>Importazione</span>
-          <span className="relative shrink-0 text-[30px] uppercase" style={{ fontFamily: 'var(--font-futura-medium)', fontWeight: 'var(--font-weight-medium)' }}>Distribuzione</span>
+        <nav aria-label="Sezioni del sito" className="flex flex-col lg:flex-row gap-[10px] lg:gap-[30px] items-start leading-[normal] text-black whitespace-nowrap w-full">
+          <a href="#selezione" className="relative shrink-0 text-[30px] uppercase no-underline text-black hover:opacity-70 transition-opacity" style={{ fontFamily: 'var(--font-futura-medium)', fontWeight: 'var(--font-weight-medium)' }}>Selezione</a>
+          <a href="#importazione" className="relative shrink-0 text-[30px] uppercase no-underline text-black hover:opacity-70 transition-opacity" style={{ fontFamily: 'var(--font-futura-medium)', fontWeight: 'var(--font-weight-medium)' }}>Importazione</a>
+          <a href="#distribuzione" className="relative shrink-0 text-[30px] uppercase no-underline text-black hover:opacity-70 transition-opacity" style={{ fontFamily: 'var(--font-futura-medium)', fontWeight: 'var(--font-weight-medium)' }}>Distribuzione</a>
         </nav>
       </AnimatedSection>
 
       {/* About Section */}
       <AnimatedSection delay={0.2}>
         <main className="flex flex-col gap-[10px] items-start text-black w-full">
-          <h1 className="leading-[normal] relative shrink-0 text-[24px] w-full" style={{ fontFamily: 'var(--font-futura-medium)', fontWeight: 'var(--font-weight-medium)' }}>Andiamo Abere!</h1>
+          <h1 className="sr-only">Abere Selezione — Vini artigianali da produttori indipendenti</h1>
+          <p className="leading-[normal] relative shrink-0 text-[24px] w-full" style={{ fontFamily: 'var(--font-futura-medium)', fontWeight: 'var(--font-weight-medium)' }}>Andiamo Abere!</p>
           <div className="leading-[0] relative shrink-0 text-[16px] w-full whitespace-pre-wrap" style={{ fontFamily: 'var(--font-futura-book)', fontWeight: 'var(--font-weight-book)' }}>
-            <p className="leading-[normal] mb-0">{`Questa era la frase tra due amici, Thomas Piras (sommelier e ristoratore) e Marco Tinessa (vigneron), per fissare l'appuntamento settimanale, che piano piano è diventato un vero e proprio progetto. `}</p>
-            <p className="leading-[normal] mb-0">{`Abere nasce dalla voglia di rimettere al centro la piacevolezza del vino, che in ogni luogo è figlia della capacità dell'uomo di interagire con la natura. Un modo di pensare al terroir che sposta l'attenzione dall'appartenenza geografica, alla capacità di interpretare i fenomeni della natura, in vigna ed in cantina. Crediamo sia questo (in estrema sintesi) ciò che contraddistingue tutti i vini che nel corso degli anni ci hanno davvero emozionato. `}</p>
-            <p className="leading-[normal]">Abbiamo cercato di allargare il nostro orizzonte rivolgendo lo sguardo a quei produttori che pur provenendo da aree geograficamente distanti, incarnano perfettamente questi valori. Crediamo questo sia il modo giusto per pensare il vino negli anni a venire, rendendolo accessibile a tutti.</p>
+            <section id="selezione">
+              <h2 className="sr-only">Selezione di vini artigianali</h2>
+              <p className="leading-[normal] mb-0">{`Questa era la frase tra due amici, Thomas Piras (sommelier e ristoratore) e Marco Tinessa (vigneron), per fissare l'appuntamento settimanale, che piano piano è diventato un vero e proprio progetto. `}</p>
+            </section>
+            <section id="importazione">
+              <h2 className="sr-only">Importazione di produttori indipendenti</h2>
+              <p className="leading-[normal] mb-0">{`Abere nasce dalla voglia di rimettere al centro la piacevolezza del vino, che in ogni luogo è figlia della capacità dell'uomo di interagire con la natura. Un modo di pensare al terroir che sposta l'attenzione dall'appartenenza geografica, alla capacità di interpretare i fenomeni della natura, in vigna ed in cantina. Crediamo sia questo (in estrema sintesi) ciò che contraddistingue tutti i vini che nel corso degli anni ci hanno davvero emozionato. `}</p>
+            </section>
+            <section id="distribuzione">
+              <h2 className="sr-only">Distribuzione vini</h2>
+              <p className="leading-[normal]">Abbiamo cercato di allargare il nostro orizzonte rivolgendo lo sguardo a quei produttori che pur provenendo da aree geograficamente distanti, incarnano perfettamente questi valori. Crediamo questo sia il modo giusto per pensare il vino negli anni a venire, rendendolo accessibile a tutti.</p>
+            </section>
           </div>
         </main>
       </AnimatedSection>
 
       {/* Contacts Section */}
       <AnimatedSection delay={0.3}>
-        <address className="flex flex-col lg:flex-row gap-[10px] lg:gap-[30px] items-start leading-[normal] text-black whitespace-nowrap w-full not-italic" style={{ fontFamily: 'var(--font-futura-book)', fontWeight: 'var(--font-weight-book)' }}>
+        <address id="contatti" className="flex flex-col lg:flex-row gap-[10px] lg:gap-[30px] items-start leading-[normal] text-black whitespace-nowrap w-full not-italic" style={{ fontFamily: 'var(--font-futura-book)', fontWeight: 'var(--font-weight-book)' }}>
           <a href="https://www.instagram.com/abereselezione/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @abereselezione" className="[text-underline-position:from-font] decoration-from-font decoration-solid relative shrink-0 underline text-[16px] text-black hover:opacity-70 transition-opacity">@abereselezione</a>
           <a href="mailto:thomas@abere.it" aria-label="Email Thomas" className="[text-underline-position:from-font] decoration-from-font decoration-solid relative shrink-0 underline text-[16px] text-black hover:opacity-70 transition-opacity">thomas@abere.it</a>
           <a href="mailto:amministrazione@abere.it" aria-label="Email amministrazione" className="[text-underline-position:from-font] decoration-from-font decoration-solid relative shrink-0 underline text-[16px] text-black hover:opacity-70 transition-opacity">amministrazione@abere.it</a>
