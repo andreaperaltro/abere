@@ -1,33 +1,6 @@
-@font-face {
-  font-family: 'Futura Std';
-  src: local('Futura Std Medium'),
-       local('Futura-Medium'),
-       local('FuturaStd-Medium');
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Futura Std';
-  src: local('Futura Std Book'),
-       local('Futura-Book'),
-       local('FuturaStd-Book');
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
 :root {
-  --font-futura-medium: 'Futura Std', 'Futura', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
-  --font-futura-book: 'Futura Std', 'Futura', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-futura-medium: 'futura-pt', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+  --font-futura-book: 'futura-pt', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
   --font-weight-medium: 500;
   --font-weight-book: 400;
-}
-
-/* iOS Safari specific font weight fix */
-@supports (-webkit-touch-callout: none) {
-  :root {
-    --font-weight-book: 350;
-  }
 }
