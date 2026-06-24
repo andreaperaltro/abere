@@ -46,9 +46,16 @@ export default function AnimatedHome({ initialBgColor }: { initialBgColor: strin
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    document.documentElement.style.backgroundColor = bgColor;
+    document.body.style.backgroundColor = bgColor;
+    document.getElementById("root")?.style.setProperty("background-color", bgColor);
+  }, [bgColor]);
+
   return (
     <motion.div
-      className="flex flex-col pt-[120px] lg:pt-[100px] pb-[110px] relative w-full min-h-screen overflow-y-auto"
+      data-home-shell="true"
+      className="relative flex min-h-[100dvh] w-full flex-col pt-[120px] pb-[110px] lg:pt-[100px]"
       style={{ backgroundColor: bgColor }}
       animate={{ backgroundColor: bgColor }}
       transition={{ duration: 1.5, ease: "easeInOut" }}

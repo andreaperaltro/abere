@@ -29,7 +29,7 @@ export default function CyclingLoader({ bgColor }: { bgColor: string }) {
   const currentLoader = loaderData[currentIndex];
 
   return (
-    <div className="relative w-full min-h-screen flex items-center justify-center" style={{ backgroundColor: bgColor }}>
+    <div className="relative flex h-full min-h-[100svh] w-full items-center justify-center" style={{ backgroundColor: bgColor }}>
       <div className="w-[200px] h-[100px] relative">
         <svg className="absolute inset-0 size-full" fill="none" preserveAspectRatio="xMidYMid meet" viewBox={currentLoader.viewBox}>
           <path d={currentLoader.path} fill="black" />

@@ -32,16 +32,18 @@ export default function App() {
   }, []);
 
   return (
-    <div className="relative w-full min-h-screen" style={{ backgroundColor: initialBgColor }}>
+    <div className="relative w-full min-h-[100dvh]" style={{ backgroundColor: initialBgColor }}>
       <AnimatedHome initialBgColor={initialBgColor} />
       <AnimatePresence mode="wait">
         {showLoader && (
           <motion.div
             key="loader"
+            data-loader-shell="true"
             initial={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="fixed inset-0 z-10 w-full min-h-screen"
+            className="fixed inset-0 z-10 h-[100dvh] min-h-[100svh] w-full"
+            style={{ backgroundColor: initialBgColor }}
           >
             <CyclingLoader bgColor={initialBgColor} />
           </motion.div>
