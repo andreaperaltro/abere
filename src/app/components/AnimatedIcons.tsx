@@ -423,7 +423,18 @@ interface ActiveIcon {
 }
 
 let _uid = 0;
-let _iconSeq = 0;
+
+function randomIconIndex(excluded: number[] = []) {
+  const available = ICONS_ORDER
+    .map((_, index) => index)
+    .filter((index) => !excluded.includes(index));
+
+  if (available.length === 0) {
+    return Math.floor(Math.random() * ICONS_ORDER.length);
+  }
+
+  return available[Math.floor(Math.random() * available.length)];
+}
 
 // ─── Single icon animator ─────────────────────────────────────────────────────
 
@@ -540,12 +551,13 @@ export default function AnimatedIcons() {
 
   const [icons, setIcons] = useState<ActiveIcon[]>(() => {
     _uid = 2;
-    _iconSeq = 2;
+    const firstIconIndex = randomIconIndex();
+    const secondIconIndex = randomIconIndex([firstIconIndex]);
     const q0 = Math.floor(Math.random() * 4);
     const q1 = freeQuadrant(q0);
     return [
-      { id: 0, iconIndex: 0, pos: OFF_SCREEN, rotation: randomRotation(), size: 200, quadrant: q0, startDelay: 0 },
-      { id: 1, iconIndex: 1, pos: OFF_SCREEN, rotation: randomRotation(), size: 200, quadrant: q1, startDelay: DRAW_MS / 2 },
+      { id: 0, iconIndex: firstIconIndex, pos: OFF_SCREEN, rotation: randomRotation(), size: 200, quadrant: q0, startDelay: 0 },
+      { id: 1, iconIndex: secondIconIndex, pos: OFF_SCREEN, rotation: randomRotation(), size: 200, quadrant: q1, startDelay: DRAW_MS / 2 },
     ];
   });
 
@@ -583,12 +595,14 @@ export default function AnimatedIcons() {
 
   const handleComplete = useCallback((id: number) => {
     setIcons((prev) => {
+      const completed = prev.find((ic) => ic.id === id);
       const other = prev.find((ic) => ic.id !== id);
       const otherQuadrant = other?.quadrant ?? 0;
       const newQuadrant = freeQuadrant(otherQuadrant);
       const others = other ? [other.pos] : [];
-      const iconIndex = _iconSeq % ICONS_ORDER.length;
-      _iconSeq++;
+      const iconIndex = randomIconIndex(
+        [completed?.iconIndex, other?.iconIndex].filter((index): index is number => index !== undefined),
+      );
 
       // Compute startDelay so the new icon begins drawing when the surviving
       // icon reaches 50% of its draw phase. If the surviving icon is already
