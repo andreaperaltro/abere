@@ -134,7 +134,7 @@ export default function AnimatedHome({ initialBgColor }: { initialBgColor: strin
       {/* Footer Button */}
       <AnimatedSection delay={0.4}>
         <a
-          href="https://drive.google.com/file/d/1wKxqFfF2ldq76rNS78XyBtwBUboCxthq/view?usp=sharing"
+          href="https://drive.google.com/file/d/1X4pOdojh5zCZ17zhI66tDvQ8HmbFoGpE/view?usp=drive_link"
           target="_blank"
           rel="noopener noreferrer"
           aria-label="Scarica il catalogo Abere in PDF"
