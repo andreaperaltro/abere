@@ -103,7 +103,7 @@ export default function AnimatedHome({ initialBgColor }: { initialBgColor: strin
       <AnimatedSection delay={0.2}>
         <main className="flex flex-col gap-[10px] items-start text-black w-full">
           <h1 className="sr-only">Abere Selezione — Vini artigianali da produttori indipendenti</h1>
-          <p className="leading-[normal] relative shrink-0 text-[24px] w-full" style={{ fontFamily: 'var(--font-futura-medium)', fontWeight: 'var(--font-weight-medium)' }}>Andiamo Abere!</p>
+          <p className="leading-[normal] relative shrink-0 text-[24px] w-full italic" style={{ fontFamily: 'var(--font-futura-medium)', fontWeight: 'var(--font-weight-medium)' }}>"Andiamo Abere!"</p>
           <div className="leading-[0] relative shrink-0 text-[16px] w-full whitespace-pre-wrap" style={{ fontFamily: 'var(--font-futura-book)', fontWeight: 'var(--font-weight-book)' }}>
             <section id="selezione">
               <h2 className="sr-only">Selezione di vini artigianali</h2>
