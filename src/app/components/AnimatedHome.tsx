@@ -33,6 +33,7 @@ export default function AnimatedHome({ initialBgColor }: { initialBgColor: strin
   const [colorIndex, setColorIndex] = useState(() => {
     return bgColors.indexOf(initialBgColor);
   });
+  const currentYear = new Date().getFullYear();
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -47,6 +48,10 @@ export default function AnimatedHome({ initialBgColor }: { initialBgColor: strin
   }, []);
 
   useEffect(() => {
+    const transition = "background-color 1.5s ease-in-out";
+    document.documentElement.style.transition = transition;
+    document.body.style.transition = transition;
+    document.getElementById("root")?.style.setProperty("transition", transition);
     document.documentElement.style.backgroundColor = bgColor;
     document.body.style.backgroundColor = bgColor;
     document.getElementById("root")?.style.setProperty("background-color", bgColor);
@@ -55,8 +60,8 @@ export default function AnimatedHome({ initialBgColor }: { initialBgColor: strin
   return (
     <motion.div
       data-home-shell="true"
-      className="relative flex min-h-[100dvh] w-full flex-col pt-[120px] pb-[110px] lg:pt-[100px]"
-      style={{ backgroundColor: bgColor }}
+      className="relative flex min-h-[100dvh] w-full flex-col pt-[120px] lg:pt-[100px]"
+      style={{ backgroundColor: bgColor, paddingBottom: "max(24px, env(safe-area-inset-bottom))" }}
       animate={{ backgroundColor: bgColor }}
       transition={{ duration: 1.5, ease: "easeInOut" }}
     >
@@ -139,6 +144,18 @@ export default function AnimatedHome({ initialBgColor }: { initialBgColor: strin
         </a>
       </AnimatedSection>
       </div>{/* end content wrapper */}
+
+      <footer
+        className="relative z-[1] mt-auto w-full pt-[40px] text-[10px] leading-[normal] text-black md:mx-auto md:w-[70vw] md:px-0"
+        style={{
+          fontFamily: 'var(--font-futura-book)',
+          fontWeight: 'var(--font-weight-book)',
+          paddingLeft: 'clamp(1.25rem, 12vw - 1.5625rem, 12.5rem)',
+          paddingRight: 'clamp(1.25rem, 12vw - 1.5625rem, 12.5rem)',
+        }}
+      >
+        Copyright {currentYear} Abere Srl PI 11077440961
+      </footer>
     </motion.div>
   );
 }
