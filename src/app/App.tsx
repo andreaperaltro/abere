@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "motion/react";
 import CyclingLoader from "./components/CyclingLoader";
 import AnimatedHome from "./components/AnimatedHome";
+import PrivacyPage from "./components/PrivacyPage";
 import { useSEO } from "./hooks/useSEO";
 
 const bgColors = [
@@ -15,6 +16,8 @@ const bgColors = [
 
 export default function App() {
   useSEO();
+  const isPrivacyPage =
+    window.location.pathname === "/privacy" || window.location.hash === "#privacy";
   const [showLoader, setShowLoader] = useState(true);
 
   // Pick a random color on mount
@@ -30,6 +33,10 @@ export default function App() {
 
     return () => clearTimeout(timer);
   }, []);
+
+  if (isPrivacyPage) {
+    return <PrivacyPage />;
+  }
 
   return (
     <div className="relative w-full min-h-[100dvh]" style={{ backgroundColor: initialBgColor }}>

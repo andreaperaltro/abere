@@ -154,7 +154,12 @@ export default function AnimatedHome({ initialBgColor }: { initialBgColor: strin
           paddingRight: 'clamp(1.25rem, 12vw - 1.5625rem, 12.5rem)',
         }}
       >
-        Copyright {currentYear} Abere Srl PI 11077440961
+        <div className="flex flex-col gap-[8px] md:flex-row md:items-center md:justify-between">
+          <span>Copyright {currentYear} Abere Srl PI 11077440961</span>
+          <a href="/privacy" className="underline text-black hover:opacity-70 transition-opacity">
+            Privacy
+          </a>
+        </div>
       </footer>
     </motion.div>
   );
